@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HILLARY OMONDI CIT-223-016/2022</title>
+<link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <div class="header">
+        <h1>HILLARY HOTEL</h1> 
+        <h3>Connect with us 🤩</h3>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Our Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="booking.html">Booking</a></li>
+            </ul>
+        </nav>
+    </div>
+   
+    <form onsubmit="return validateForm()" id="formInputs">
+        <h2 id="title">Booking Form</h2>
+        <table cellpadding="10">
+            <tr>
+                <td colspan="2">
+                    <label for="name">Full Name</label>
+                    <input id="name" type="text" placeholder="Enter your name">
+                    <span id="name-error" class="error-message"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="example@mail.com">
+                    <span id="email-error" class="error-message"></span> 
+                </td>
+                <td>
+                    <label for="phone">Phone Number</label>
+                    <input id="phone" type="text" placeholder="Enter your number">
+                    <span id="phone-error" class="error-message"></span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td colspan="2">
+                    <label>Gender:</label>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <span id="gender-error" class="error-message"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="date">Date you would like to check-in:</label>
+                    <input type="date" id="date">
+                    <span id="date-error" class="error-message"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="time">Select Your Preferred Check-in Time:</label>
+                    <select id="time" name="time">
+                        <option value="">Select Time</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Noon">Noon</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Evening">Evening</option>
+                    </select>
+                    <span id="time-error" class="error-message"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="members">How many members would you like to book for:</label>
+                    <input id="members" type="number" placeholder="0" min="1">
+                    <span id="members-error" class="error-message"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                   <label for="enquiry">Any questions for us?</label>
+                   <textarea id="enquiry" name="enquiry" cols="50" rows="5" placeholder="Your questions..."></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn-primary" type="submit">Submit</button>
+                </td>
+                <td>
+                    <button class="btn-primary" type="reset">Reset</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+   
+    <footer class="myFooter">
+        HILLARY HOTEL <br>
+        Mtwapa, Mombasa. <br>
+        Phone: +254704617099 <br>
+        HOME AWAY FROM HOME!! <br>
+        © 2024 Hillary Hotel. All rights reserved.<br />
+        Created by Hillary Omondi
+    </footer>
+    
+    
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Clear previous error messages
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(el => el.textContent = '');
+
+            // Full Name validation
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                document.getElementById('name-error').textContent = 'Full Name is required.';
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '') {
+                document.getElementById('email-error').textContent = 'Email is required.';
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            // Phone number validation
+            const phone = document.getElementById('phone').value.trim();
+            const phonePattern = /^[0-9]{10,15}$/; 
+            if (phone === '') {
+                document.getElementById('phone-error').textContent = 'Phone number is required.';
+                isValid = false;
+            } else if (!phonePattern.test(phone)) {
+                document.getElementById('phone-error').textContent = 'Please enter a valid phone number.';
+                isValid = false;
+            }
+
+            // Gender validation
+            const gender = document.querySelector('input[name="gender"]:checked');
+            if (!gender) {
+                document.getElementById('gender-error').textContent = 'Please select your gender.';
+                isValid = false;
+            }
+
+            // Date validation
+            const date = document.getElementById('date').value;
+            if (date === '') {
+                document.getElementById('date-error').textContent = 'Please select a check-in date.';
+                isValid = false;
+            } else {
+                const selectedDate = new Date(date);
+                const today = new Date();
+                today.setHours(0,0,0,0);
+                if (selectedDate < today) {
+                    document.getElementById('date-error').textContent = 'Check-in date cannot be in the past.';
+                    isValid = false;
+                }
+            }
+
+            // Time validation
+            const time = document.getElementById('time').value;
+            if (time === '') {
+                document.getElementById('time-error').textContent = 'Please select a check-in time.';
+                isValid = false;
+            }
+
+            // Members validation
+            const members = document.getElementById('members').value;
+            if (members === '') {
+                document.getElementById('members-error').textContent = 'Please enter number of members.';
+                isValid = false;
+            } else if (members < 1) {
+                document.getElementById('members-error').textContent = 'Number of members must be at least 1.';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

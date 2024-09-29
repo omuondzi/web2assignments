@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-decoration: none;
+}
+
+body {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(206, 237, 233),
+    rgb(79, 221, 207)
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-image: url("hotel-management4.jpg");
+  background-size: cover;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header h1,
+.header h3 {
+  color: rgb(115, 231, 231);
+}
+
+.menu {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.menu ul {
+  list-style: none;
+}
+
+.menu li {
+  display: inline-block;
+  margin: 0 15px;
+  color: rgb(127, 227, 231);
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background-color: rgba(17, 17, 17, 0.2);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+#title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#formInputs {
+  margin: 20px auto 30px auto;
+  border-radius: 20px;
+  background: white;
+  padding: 50px 20px;
+  width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#formInputs table {
+  width: 100%;
+}
+
+#formInputs label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#formInputs input,
+#formInputs select,
+#formInputs textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background: rgb(79, 138, 184);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: rgb(59, 118, 164);
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.myFooter {
+  background: rgb(79, 138, 184);
+  color: white;
+  width: 100%;
+  border-radius: 5px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 20px 0;
+}
